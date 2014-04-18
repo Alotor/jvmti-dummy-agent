@@ -1,0 +1,29 @@
+apply plugin: 'cpp'
+
+defaultTasks 'agentSharedLibrary'
+
+model {
+    toolChains {
+        clang(Clang) {}
+    }
+}
+
+libraries {
+    agent {
+        binaries.withType(SharedLibraryBinary) {
+            cppCompiler.args "-I/opt/java7/include"
+            cppCompiler.args "-I/opt/java7/include/linux"
+        }
+    }
+}
+
+sources {
+    agent {
+        cpp {
+            source {
+                srcDir "src"
+                include "**/*.cpp"
+            }
+        }
+    }
+}
