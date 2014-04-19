@@ -1,6 +1,10 @@
 apply plugin: 'cpp'
+apply plugin: 'java'
 
 defaultTasks 'agentSharedLibrary'
+
+sourceCompatibility = '1.6'
+targetCompatibility = '1.6'
 
 model {
     toolChains {
@@ -21,7 +25,7 @@ sources {
     agent {
         cpp {
             source {
-                srcDir "src"
+                srcDir "src/main/cpp"
                 include "**/*.cpp"
             }
         }
